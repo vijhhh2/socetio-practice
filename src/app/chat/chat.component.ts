@@ -5,8 +5,8 @@ import * as moment from 'moment';
 import { Message } from '../models/message.model';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-export const socket = io('http://localhost:3000/');
-// export const socket = io('https://mangapotichat.herokuapp.com');
+// export const socket = io('http://localhost:3000/');
+export const socket = io('https://mangapotichat.herokuapp.com'); // to run the backend please enable this connection
 
 @Component({
   selector: 'app-chat',
