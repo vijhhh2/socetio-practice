@@ -1,0 +1,33 @@
+<body class="chat">
+    <div class="chat__sidebar">
+      <h3>People</h3>
+      <div id="users"></div>
+    </div>
+
+    <div class="chat__main">
+      <ol *ngIf="messages.length > 0" class="chat__messages" ngx-auto-scroll lock-y-offset="10" observe-attributes>
+        <li *ngFor="let msg of messages" class="message">
+          <div class="message__title">
+            <h4>{{msg.from}}</h4>
+            <span>{{msg.createdAt}}</span>
+          </div>
+          <div class="message__body">
+            <p *ngIf="msg.text">{{ msg.text }}</p>
+            <p *ngIf="msg.url">
+              <a [href]="msg.url" target="_blank">User Location</a>
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="chat__footer">
+        <form>
+          <input type="text" name="message" [(ngModel)]="message" autofocus autocomplete="on"/>
+          <button (click)="submit()">Send</button>
+        </form>
+
+        <button (click)="sendLocation()" [disabled]="sendLocationDisabled" >
+          {{ sendLocationDisabled ? 'Sending Location...': 'send location' }}</button>
+      </div>
+    </div>
+  </body>
